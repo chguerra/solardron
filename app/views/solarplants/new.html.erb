@@ -1,0 +1,34 @@
+<h2 style="text-align:center;">Crear planta solar</h2>
+<div class="newsolarplant">
+<form action="/solarplants" method="post">
+<input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <div class="input-field col s6">
+	  <input name="solarplant_name" id="solarplant_name" type="text" class="validate">
+	  <label for="solarplant_name">Nombre Planta Solar</label>
+  </div>
+  <label>Seleccionar cliente</label><br>
+    <select class="browser-default" name="client_id">
+      <% @clients.each do |client| %>
+      <option value="<%= client.id%>"><%= client.name %></option>
+      <% end %>
+    </select><br>	
+	<br>
+	<div id="map">
+	</div>
+	 <div class="row">
+        <div class="input-field col s4">
+          <input name="coord_x" id="js-coord_x" type="text">
+        </div>
+        <div class="input-field col s4">
+          <input name="coord_y" id="js-coord_y" type="text" >
+        </div>
+         <div class="input-field col s4">
+          <input name="zoom" id="js-zoom" type="text">
+        </div>
+    </div>
+	<button type="submit" id="js-submit-solarplant" class="waves-effect waves-light btn">Guardar</button>
+</div>
+</form>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-3OQovFhCL99YiXkLclIabUTzUoiUdzo&callback=initMap">
+    </script>

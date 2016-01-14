@@ -1,5 +1,10 @@
+<div class="report">
+  <%= @solarplant.name  %>
+  <%= @report.id %>
+  <%= @report.date %>
+</div>
 <div class="hotspots">
   <% @hotspots.each do |hotspot| %>
-    <li><%= hotspot.id %></li>
+    <li><%= hotspot.id %><%= hotspot.date %><%= hotspot.hotspot_id %><%= hotspot.coord_x %><%= hotspot.coord_y %><%= hotspot.max_temp %><%= hotspot.min_temp %><%= hotspot.hotspot_type %></li>
     <% end %>
 </div>

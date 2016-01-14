@@ -5,8 +5,41 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 </head>
 <body>
+
+<div class="navbar-fixed">
+
+<ul id="dropdown1" class="dropdown-content">
+  <li><%= link_to("Ver informes", reports_path) %> </a></li>
+  <li><%= link_to("Nuevo informe", new_report_path) %></li>
+</ul>
+
+<ul id="dropdown3" class="dropdown-content">
+  <li><%= link_to("Ver clientes", clients_path) %> </a></li>
+  <li><%= link_to("Nuevo cliente", new_client_path) %></li>
+</ul>
+
+<ul id="dropdown2" class="dropdown-content">
+  <li><%= link_to("Ver plantas", solarplants_path) %> </a></li>
+  <li><%= link_to("Nueva Planta Solar", new_solarplant_path) %></li>
+</ul>
+ 
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo"><img id="logo" src="/LOGO_SD.png"></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown3">Clientes</a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Plantas Solares</a></li>
+        <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Informes</a></li>	
+      </ul>
+    </div>
+  </nav>
+
+</div>
 
 <%= yield %>
 

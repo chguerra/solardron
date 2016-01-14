@@ -1,0 +1,22 @@
+<div class="container">
+	<ul class="collection">
+	 	<% @hotspots.each do |hotspot| %>
+			 	<div class="card">
+		            <div class="card-image-advanced">
+		              <img src="/reports/<%= hotspot.report_id %>/<%= hotspot.date %>_<%= hotspot.hotspot_id %>.png">
+		              <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://maps.google.com/maps?q=loc:<%= hotspot.coord_x %>,<%= hotspot.coord_y %>">
+		              <span class="card-title">Punto caliente tipo <%= hotspot.hotspot_type %></span>
+		            </div>
+		            <div class="card-content">
+		              <p>Temperatura máxima: <%= hotspot.max_temp %>º</p>
+		              <p>Temperatura mínima: <%= hotspot.min_temp %>º</p>
+		              <p>Escanear para acceder a Google maps</p>
+		            </div>
+		            <div class="card-action">
+		              <a href="#">Reparado</a>
+		              <a href="#">Falso positivo</a>
+		        </div>
+          </div>
+	 	<% end %>
+	 </ul>	
+</div>

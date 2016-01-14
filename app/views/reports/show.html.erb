@@ -1,0 +1,105 @@
+<div class="newreport">
+<h2><%= @solarplants.name %></h2>
+<h5>Informe fecha <%= @report.date.to_formatted_s(:db).split(' ')[0]%></h5>
+	<div class="reportdata">
+		<p id="js-report_id" data-reportid="<%= @report.id %>"></p>
+		<p id="js-coord_x" data-coordX="<%=@solarplants.coord_x%>"></p>
+		<p id="js-coord_y" data-coordY="<%=@solarplants.coord_y%>"></p>
+		<p id="js-zoom" data-zoom="<%=@solarplants.zoom%>"></p>
+	</div>
+</div>
+
+<div class="row" style="width:80%;text-align:center;">
+  <div id="mapreport">
+  </div>
+  <div class="floatingmenu">
+    <div class="selector">
+  <form action="#">
+    <p style="text-align:center;">
+        <p>Temperatura punto caliente</p>
+        <input type="text" id="amount" readonly style="color:#EF5350; font-weight:bold; text-align: center; margin: 0 auto;">
+    </p>
+  <div id="slider-range" style="height:300px;display:inline-block;margin-top:25px;">
+      <div class="temperatures">
+        <p id="toprange">Max temp</p>
+        <p id="medrange">Med temp</p>
+        <p id="botrange">Min temp</p>
+      </div>
+  </div>
+  <br>
+  
+  </form>
+</div>
+  </div>
+</div>
+
+
+<div class="row" style="width:80%;text-align:center;">
+  <div id="js-focus-point" class="js-printed-report-area">
+  <p>Fallos a mostrar en el mapa</p><br>
+      <p>
+        <input type="checkbox" id="tipo1" class="js-refresh-report" data-type=1 />
+        <label for="tipo1"><img class="marker-icon" src="http://www.googlemapsmarkers.com/v1/00ccff/">Tipo 1</label>
+      </p>
+      <p>
+        <input type="checkbox" id="tipo2" class="js-refresh-report" data-type=2 />
+        <label for="tipo2"><img class="marker-icon" src="http://www.googlemapsmarkers.com/v1/00cc00/">Tipo 2</label>
+      </p>
+      <p>
+        <input type="checkbox" id="tipo3" class="js-refresh-report" data-type=3 />
+        <label for="tipo3"><img class="marker-icon" src="http://www.googlemapsmarkers.com/v1/ffff00/">Tipo 3</label>
+      </p>
+      <p>
+        <input type="checkbox" id="tipo4" class="js-refresh-report" data-type=4 />
+        <label for="tipo4"><img class="marker-icon" src="http://www.googlemapsmarkers.com/v1/ff9900/">Tipo 4</label>
+      </p>
+      <p>
+        <input type="checkbox" id="tipo5" class="js-refresh-report" data-type=5 />
+        <label for="tipo5"><img class="marker-icon" src="http://www.googlemapsmarkers.com/v1/ff0000/">Tipo 5</label>
+      </p>
+      <br><br>
+    
+  </div>  
+</div>
+
+<div class="row" style="width:80%;text-align:center;">
+  <div class="content-images-aware">
+  <div class="hotspot-select">
+    <select id="js-select-hotspot"class="browser-default">
+      <option>Seleccionar punto</option>
+      <%= @report.hotspots.each do |hotspot| %>
+        <option id="js-select-hs-<%= hotspot.id %>" value="<%= hotspot.id %>">Punto nº <%= hotspot.id %></option>
+      <% end %>
+    </select>
+    </div>
+    <div id="main-hotspot">
+      <div class ="card-image-main">
+  	
+      </div>
+      <div class="chip-collection">
+  	
+      </div>      
+    </div>
+    <div class="js-form-report-generator">
+    <p>Marcar los puntos a incluir en el informe</p>
+      <form action="/reports/advanced" method="POST">
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <% @report.hotspots.each do |hotspot| %>
+          <p>
+            <input type="checkbox" id="<%= hotspot.hotspot_id %>" class="js-report-generator" data-hotspotId=<%= hotspot.id %> />
+            <label for="<%= hotspot.hotspot_id %>">P-<%= hotspot.hotspot_id %></label>
+          </p>
+        <% end %>
+        <br><input type="submit" id="js-generate-advanced-report" value="Generar informe" class="waves-effect waves-light btn" >
+      </form>
+    </div>
+    <div class="hotspot-collection">
+    </div>
+  </div>  
+</div>
+
+<div id="hiddenform">  
+</div>
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-3OQovFhCL99YiXkLclIabUTzUoiUdzo&callback=initShowReport">
+    </script>

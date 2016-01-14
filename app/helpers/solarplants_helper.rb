@@ -1,0 +1,2 @@
+module SolarplantsHelper
+end

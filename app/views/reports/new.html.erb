@@ -1,17 +1,18 @@
 <div class="newreport">
+<h2>Nuevo informe</h2>
   <form class="newreportform" action="/reports" method="post">
     <label> Fecha del informe</label><br>
     <input type="date" name="date" value=""><br>
     <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
     <label>Seleccionar planta</label><br>
-    <select class="plant" name="solarplant_id">
+    <select class="browser-default" name="solarplant_id">
       <% @solarplants.each do |solarplant| %>
       <option value="<%= solarplant.id%>"><%= solarplant.name %></option>
       <% end %>
     </select><br>
     <label>Pegar texto aquí</label>
-    <input type="textarea"   name="dron_input" value=""><br>
-    <input type="submit" name="name" value="Guardar informe">
+    <input type="textarea" class="dron_input"  name="dron_input" value=""><br>
+    <input type="submit" name="name" value="Guardar informe" class="waves-effect waves-light btn">
   </form>
 
 </div>

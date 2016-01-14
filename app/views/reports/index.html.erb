@@ -1,0 +1,12 @@
+<div class="container">
+	<ul class="collection">
+		<% @solarplants.each do |solarplant| %>
+			<% if solarplant.reports.length > 0 %>
+				<li class="collection-header"><h5><%= solarplant.name %></h5></li>
+					<% solarplant.reports.each do |report| %>
+					 	<li><%= link_to("Informe fecha #{report.date.to_formatted_s(:db).split(' ')[0]}", report_path(report))%></li>
+					<% end %>
+			<% end %>
+		<% end %>			
+	</ul>
+</div>

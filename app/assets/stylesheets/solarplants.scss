@@ -1,0 +1,25 @@
+// Place all the styles related to the solarplants controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.newsolarplant  {
+	width: 90%;
+	margin: 0 auto;
+	display: block;
+	text-align: center;
+}
+#map {
+	height: 480px;
+	margin-bottom: 15px;
+}
+.input-field col s4 {
+	text-align: center;
+}
+#map_show {
+	height: 480px;
+	margin-bottom: 15px;
+}
+
+.card-image-main {
+	height: 250px;
+	width: 100%;
+}

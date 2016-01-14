@@ -1,0 +1,26 @@
+<div class="newsolarplant">
+
+<div class="js-plant-id" data-plantid ="<%= @solarplant.id %>"><h2><%= @solarplant.name %> </h2></div>
+
+	<div class="row">
+        <div class="input-field col s4">
+          <input class="js-coord_x" id="disabled" type="text" disabled value="<%= @solarplant.coord_x %>">
+        </div>
+        <div class="input-field col s4">
+          <input class="js-coord_y" id="disabled" type="text" disabled value="<%= @solarplant.coord_y %>">
+        </div>
+         <div class="input-field col s4">
+          <input class="js-zoom" id="disabled" type="text" disabled value ="<%= @solarplant.zoom %>">
+        </div>
+    </div>
+
+	<div id="map_show">	
+
+
+	</div>
+
+</div>
+
+<script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-3OQovFhCL99YiXkLclIabUTzUoiUdzo&callback=loadMap">
+    </script>
