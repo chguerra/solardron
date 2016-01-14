@@ -196,6 +196,7 @@ function filterByTemperature(tempArray){
     var lat = $('#js-coord_x').data('coordx');
     var lng = $('#js-coord_y').data('coordy');
     var zoom = $('#js-zoom').data('zoom');
+    $('.hotspot-collection').empty();
     showSolarplantReport(zoom, lat, lng, hotspotsCollection); 
 };
 
